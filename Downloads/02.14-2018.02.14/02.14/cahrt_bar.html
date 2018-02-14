@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			.chart {
+				height:500px;
+				width:500px;
+				border:2px solid #ff00;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="chart">
+			<canvas id="myChart" width="400" height="400"></canvas>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+		<script>
+			// generates random colors
+			function hex() {
+					var h = "#"+((1<<24)*Math.random()|0).toString(16);
+					return h;
+				}
+			var  bgc = [];	
+			var dataArray = ["365.51", "346.74", "311.87", "307.28", "305.84", "305.70", "283.96", "266.16", "249.10", "247.51", "246.26",
+			"241.88", "240.43","235.38", "233.36", "231.49", "229.51", "229.10", "226.83", "213.87"];	
+			var borderColor = [];
+			var Labal = ["Tomkevičienė", "Levanas", "Klimavičiūtė", "Ramoška", "Ulkė", "Graževičius", "Žeronas", "Plyčius", "Viselga",
+			"Rimkutė", "Kalinkinas", "Jurkus", "Strioga", "Pocius", "Vadopalaitė", "Sinius", "Šerepėka", "Peleckas", "Kukauskas","Kalašnikovas"];
+			var ID = ["ID:100111", "ID:100112", "ID:100113", "ID:100114", "ID:100115", "ID:100116", "ID:100117", "ID:100118", "ID:100119", "ID:100120", "ID:100121", "ID:100122", "ID:100123", "ID:100124",
+			"ID:100125", "ID:100126", "ID:100127", "ID:100128", "ID:100129", "ID:100130"];
+				
+			for(i=0; i<dataArray.length; i++){
+				bgc.push(hex()); 
+			}
+			
+			for(i=0; i<dataArray.length; i++){
+				borderColor.push("#191919"); 
+			}	
+			// console.log(bgc);
+				
+			var ctx = document.getElementById("myChart").getContext("2d");
+			var myChart = new Chart(ctx, {
+			    type: 'bar',
+			    data: {
+			        labels:Labal,
+			        datasets: [{
+			            label: "Zaidejai bagal reitinga",
+			            data: dataArray,
+			            backgroundColor: bgc,			        
+			            borderColor: borderColor ,
+			            borderWidth: 0.3
+			        }]
+			    },
+			    options: {
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        }
+			    }
+			});
+		</script>
+	</body>
+</html>
